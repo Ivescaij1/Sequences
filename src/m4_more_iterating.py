@@ -222,7 +222,7 @@ def sum_sequence(sequence):
 def run_test_count_items_bigger_than():
     """ Tests the   count_items_bigger_than   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  count_items_bigger_than  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests.
     #
@@ -347,6 +347,44 @@ def run_test_count_items_bigger_than():
     print('  for your code (and Python\'s pseudo-random numbers).')
 
     # TO DO 4 (continued):  Add your 2 ADDITIONAL tests here:
+    # Test 9:
+    sequence = [45, 84, 32, 70, -10, 40]
+    threshold = -10.000000001
+    expected = 6
+    actual = count_items_bigger_than(sequence, threshold)
+    print()
+    print('Test 9 expected:', expected)
+    print('       actual:  ', actual)
+
+    # Test 10:
+    sequence = []
+    n = 100000
+    for _ in range(n):
+        sequence.append(random.randrange(-99, 101))
+
+    threshold = 0
+    expected = n * (100 / 200)
+    actual = count_items_bigger_than(sequence, threshold)
+    standard_deviation = math.sqrt(n * (100 / 200) * (100 / 200))
+
+    print()
+    print('Test 10 uses PROBABILITY THEORY')
+    print('  to compute the expected result.')
+    print('  See the note that follows to see')
+    print('  how to evaluate the results of this test.')
+    print('       expected:', expected)
+    print('       actual:  ', actual)
+
+    print()
+    print('  Note on how to evaluate the results of')
+    print('  Test 8 (above): According to Probability Theory,')
+    message = '  the above "actual" should be within {:.0f}'
+    print(message.format(2 * standard_deviation))
+    print('  of the above "expected" about 95 percent of the time.')
+    print()
+    print('  You might try running this program multiple times')
+    print('  to see whether or not that seems to be true')
+    print('  for your code (and Python\'s pseudo-random numbers).')
 
 
 def count_items_bigger_than(numbers, threshold):
@@ -383,9 +421,15 @@ def count_items_bigger_than(numbers, threshold):
       :type threshold: float
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(len(numbers)):
+        if numbers[k] > threshold:
+            count = count + 1
+
+    return count
 
 
 def run_test_count_positive_sines():
