@@ -527,7 +527,7 @@ def print_items_that_are_odd_integers(sequence):
     #   is an integer.  Note that   int   has NO quotes surrounding it.
     # ------------------------------------------------------------------
     for k in range(len(sequence)):
-        if type(sequence[k]) == int:
+        if isinstance(sequence[k], int):
             if sequence[k] % 2 != 0:
                 print(str(sequence[k]) + ' is at index ' + str(k))
 
